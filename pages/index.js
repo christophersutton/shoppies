@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useSearch from "../lib/use-search";
 import Search from "../components/Search";
-
+import ResultList from "../components/ResultList"
 const searchInit = {
   term: "",
   shouldFetch: false,
@@ -15,10 +15,7 @@ export default function Home() {
   return (
     <>
       <Search handleSearch={setSearchParams} currentSearch={searchParams} />
+      <ResultList data={data} error={error}/>
     </>
   )
-  // if (error) return <div>failed to load</div>
-  // if (!data) return <div>Searching...</div>
-  // if (data.Response == "False") return <div>No Results Found</div>
-  // return <div>{data.totalResults} movies found</div>
 }
