@@ -15,9 +15,9 @@ export default function Home() {
   return (
     <div className="w-full">
       <header className="h-4 bg-green-900"></header>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto px-2">
         <div className="flex justify-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl tracking-tighter font-medium py-4 lg:py-8 text-green-900">
+          <h1 className="text-2xl md:text-5xl tracking-tighter font-medium py-6 md:py-8 text-green-900">
             Submit Your <span className="font-bold">Shoppies</span> Nominations 
           </h1>
         </div>

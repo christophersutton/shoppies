@@ -24,7 +24,7 @@ export default function Search({
 
   return (
     <div>
-      <form className="mt-4 group" onSubmit={handleSubmit}>
+      <form className="group" onSubmit={handleSubmit}>
         <input
           type="text"
           name="searchTerm"

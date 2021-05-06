@@ -29,10 +29,10 @@ export default function MovieCard(movie: Movie) {
         <div>
           <button
             onClick={handleClick}
-            className="inline-flex items-center  px-2.5 py-0.5 bg-white"
+            className="inline-flex items-center w-12 md:w-16 mx-4 bg-white text-green-900 hover:text-green-600"
           >
-            {isNominated ? <BadgeCheckIcon className="h-16 w-16 text-green-900 hover:text-green-600" />
-              : <BadgeCheckIconOutline className="h-16 w-16 text-green-900 hover:text-green-600" />}
+            {isNominated ? <BadgeCheckIcon />
+              : <BadgeCheckIconOutline />}
           </button>
         </div>
       </div>
