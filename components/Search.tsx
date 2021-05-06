@@ -1,30 +1,36 @@
 import { useState, useEffect } from "react";
-import useSearch from '../lib/use-search'
+import { searchParams } from '../lib/use-search'
 
-export default function Search({handleSearch, currentSearch}) {
-  const [searchTerm, setSearchTerm] = useState("");
+type SearchProps = {
+  setSearchParams: (searchParams: searchParams) => void,
+  currentSearchParams: searchParams,
+};
+
+export default function Search({
+  setSearchParams,
+  currentSearchParams,
+}: SearchProps) {
+  const [searchTerm, setSearchTerm] = useState(currentSearchParams.term);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSearch({...currentSearch, term: searchTerm, shouldFetch: true})
+    setSearchParams({ term: searchTerm, shouldFetch: true, page: 1,});
   };
 
   const handleChange = (e) => {
-    handleSearch({...currentSearch, shouldFetch: false})
-    setSearchTerm(e.target.value)
+    setSearchTerm(e.target.value);
+    setSearchParams({ term: searchTerm, shouldFetch: false, page: 1 });
   };
 
   return (
     <div>
-      <form
-        className="mt-4"
-        onSubmit={handleSubmit}
-      >
+      <form className="mt-4" onSubmit={handleSubmit}>
         <div>
           <input
             type="text"
             name="searchTerm"
             id="searchTerm"
+            autoComplete="false"
             className="shadow-sm py-3 border-2 text-center focus:border-indigo-700 min-w-full block sm:text-sm border-indigo-500 rounded-t-md"
             placeholder="Search for your favorite movie"
             onChange={handleChange}
