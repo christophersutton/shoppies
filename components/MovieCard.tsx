@@ -15,7 +15,7 @@ export default function MovieCard(movie: Movie) {
   }
 
   return (
-    <li key={imdbID} className="py-4">
+    <li key={imdbID} className="py-4 last:pb-8">
       <div className="flex items-top space-x-4">
         <div className="flex-shrink-0">
           <img className="w-14" src={Poster} alt={Title} />

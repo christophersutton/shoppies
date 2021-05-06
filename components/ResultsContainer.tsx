@@ -9,10 +9,10 @@ export default function ResultsContainer({
   currentSearchParams,
 }) {
 
-  if (error) return <div>failed to load</div>;
-  if (!shouldFetch && !data) return <div>Search for something dingdong...</div>;
-  if (shouldFetch && !data) return <div>Searching...</div>;
-  if (data.Response == "False") return <div>No Results Found</div>
+  if (error) return <p>Uh oh, the api is down. Please try again later.</p>;
+  if (!shouldFetch && !data) return <p className="text-gray-400 text-center text-xl mt-12">Search to get started...</p>;
+  if (shouldFetch && !data) return <p className="text-gray-400 text-center text-xl mt-12">Searching...</p>;
+  if (data.Response == "False") return <p className="text-gray-400 text-center text-xl mt-12">Nothing was found! Try broadening your search.</p>;
   return <ResultsList 
     data={data} 
     setSearchParams={setSearchParams}

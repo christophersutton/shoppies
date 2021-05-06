@@ -35,7 +35,7 @@ export default function ResultList({
           ))}
         </ul>
         <nav
-          className="bg-white py-3 flex items-center justify-center border-t border-gray-200"
+          className="bg-white py-6 flex items-center justify-center border-t border-gray-200"
           aria-label="Pagination"
         >
           {showPrev ? (
@@ -54,7 +54,8 @@ export default function ResultList({
           <p className="text-sm text-gray-700 px-4">
             Showing <span className="font-medium">{startResult}</span> to
               <span className="font-medium"> {endResult}</span> of
-              <span className="font-medium"> {data.totalResults}</span> results
+              <span className="font-medium"> {data.totalResults}</span> results for 
+              <span className="font-medium"> {currentSearchParams.term}</span>
           </p>
 
           {showNext ? (
