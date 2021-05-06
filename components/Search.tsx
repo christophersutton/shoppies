@@ -14,7 +14,7 @@ export default function Search({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchParams({ term: searchTerm, shouldFetch: true, page: 1,});
+    setSearchParams({ term: searchTerm, shouldFetch: true, page: 1, });
   };
 
   const handleChange = (e) => {
@@ -24,22 +24,23 @@ export default function Search({
 
   return (
     <div>
-      <form className="mt-4" onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            name="searchTerm"
-            id="searchTerm"
-            autoComplete="false"
-            className="shadow-sm py-3 border-2 text-center focus:border-indigo-700 min-w-full block sm:text-sm border-indigo-500 rounded-t-md"
-            placeholder="Search for your favorite movie"
-            onChange={handleChange}
-          />
-        </div>
+      <form className="mt-4 group" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="searchTerm"
+          id="searchTerm"
+          autoComplete="false"
+          className=" py-3 border-2 text-center min-w-full sm:text-sm rounded-t-md 
+                      border-green-900 group-hover:border-green-700 focus:ring-inset focus:ring-2 focus:ring-green-700 focus:border-green-700 "
+          placeholder="Search for your favorite movie"
+          onChange={handleChange}
+        />
+
         <div className="rounded-b-md mt-0 sm:flex-shrink-0">
           <button
             type="submit"
-            className="w-full bg-indigo-500 border border-transparent rounded-b-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
+            className="w-full border border-transparent rounded-b-md py-2 px-4 text-white 
+            bg-green-900 group-hover:bg-green-700 group-focus:bg-green-700 focus:ring-2 ring-inset focus:ring-green-700 focus:border-green-700"
           >
             Search
           </button>
