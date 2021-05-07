@@ -39,14 +39,14 @@ export default function ResultList({
         aria-label="Pagination"
       >
         {showPrev ? (
-          <a
+          <button
             onClick={(e) =>
               handlePageClick(e, currentSearchParams.page - 1)
             }
-            className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+            className="relative inline-flex items-center px-4 py-2 border hover:border-green-900 text-sm font-medium rounded-md text-green-900 bg-white hover:bg-gray-50"
           >
             Previous
-          </a>
+          </button>
         ) : (
           ""
         )}
@@ -59,14 +59,14 @@ export default function ResultList({
         </p>
 
         {showNext ? (
-          <a
+          <button
             onClick={(e) =>
               handlePageClick(e, currentSearchParams.page + 1)
             }
-            className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+            className="relative inline-flex items-center px-4 py-2 border text-sm hover:border-green-900 font-medium rounded-md text-green-900 bg-white hover:bg-gray-50"
           >
             Next
-          </a>
+          </button>
         ) : (
           ""
         )}
