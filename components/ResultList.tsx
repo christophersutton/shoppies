@@ -27,52 +27,52 @@ export default function ResultList({
   };
 
   return (
-    <>
-      <div className="flow-root mt-6">
-        <ul className="-my-5 divide-y divide-gray-200">
-          {data.Search.map((movie) => (
-            <MovieCard {...movie} key={movie.imdbID} />
-          ))}
-        </ul>
-        <nav
-          className="bg-white py-6 flex items-center justify-center border-t border-gray-200"
-          aria-label="Pagination"
-        >
-          {showPrev ? (
-            <a
-              onClick={(e) =>
-                handlePageClick(e, currentSearchParams.page - 1)
-              }
-              className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-            >
-              Previous
-            </a>
-          ) : (
-            ""
-          )}
 
-          <p className="text-sm text-gray-700 px-4">
-            Showing <span className="font-medium">{startResult}</span> to
+    <div className="flow-root mt-6">
+      <ul className="divide-y divide-gray-200">
+        {data.Search.map((movie) => (
+          <MovieCard {...movie} key={movie.imdbID} />
+        ))}
+      </ul>
+      <nav
+        className="bg-white py-6 flex items-center justify-center border-t border-gray-200"
+        aria-label="Pagination"
+      >
+        {showPrev ? (
+          <a
+            onClick={(e) =>
+              handlePageClick(e, currentSearchParams.page - 1)
+            }
+            className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            Previous
+          </a>
+        ) : (
+          ""
+        )}
+
+        <p className="text-sm text-gray-700 px-4">
+          Showing <span className="font-medium">{startResult}</span> to
               <span className="font-medium"> {endResult}</span> of
-              <span className="font-medium"> {data.totalResults}</span> results for 
+              <span className="font-medium"> {data.totalResults}</span> results for
               <span className="font-medium"> {currentSearchParams.term}</span>
-          </p>
+        </p>
 
-          {showNext ? (
-            <a
-              onClick={(e) =>
-                handlePageClick(e, currentSearchParams.page + 1)
-              }
-              className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-            >
-              Next
-            </a>
-          ) : (
-            ""
-          )}
+        {showNext ? (
+          <a
+            onClick={(e) =>
+              handlePageClick(e, currentSearchParams.page + 1)
+            }
+            className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            Next
+          </a>
+        ) : (
+          ""
+        )}
 
-        </nav>
-      </div>
-    </>
+      </nav>
+    </div>
+
   );
 }
