@@ -8,8 +8,10 @@ import { BadgeCheckIcon as BadgeCheckIconOutline } from '@heroicons/react/outlin
 export default function MovieCard(movie: Movie) {
   const { addNomination, removeNomination, nominations } = useNominations();
   const { imdbID, Poster, Title, Year } = movie
+
   let isNominated = nominations.some((e) => e.imdbID === imdbID);
-  
+  const disabled = !isNominated && nominations.length > 4 ? true : false
+
   const handleClick = () => {
     isNominated ? removeNomination(movie) : addNomination(movie)
   }
@@ -28,13 +30,14 @@ export default function MovieCard(movie: Movie) {
         </div>
         <div>
           <button
+            disabled={disabled}
             onClick={handleClick}
-            className="inline-flex items-center w-12 md:w-16 mx-4 bg-white text-green-900 hover:text-green-600"
+            className="inline-flex items-center w-12 md:w-16 mx-4 bg-white text-green-900 hover:text-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isNominated ? <BadgeCheckIcon /> : <BadgeCheckIconOutline />}
           </button>
         </div>
       </div>
-    </li>
+    </li >
   );
 }

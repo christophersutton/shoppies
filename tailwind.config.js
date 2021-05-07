@@ -6,7 +6,9 @@ module.exports = {
   },
   variants: {
     extend: {
-      padding: ['last']
+      padding: ['last'],
+      opacity: ['disabled'],
+      cursor: ['disabled'],
     },
   },
   plugins: [

@@ -1,17 +1,10 @@
 import React, { FC, useMemo, useEffect } from "react";
-import { NOMINATIONS, TOO_MANY_NOMINATIONS_ERROR, EMPTY_STATE_NOMINATIONS_MESSAGE, } from './const';
 import { Movie } from './types'
+const NOMINATIONS = "NOMINATIONS";
 
 export interface State {
-    nominations: Array<Movie>,
-    toast?: string,
+    nominations: Movie[];
 }
-
-type Toast = {
-    type: string
-    message: string
-}
-
 
 // Going to be saving context state in localstorage and 
 // need to read it back out of localstorage on initial load  
@@ -21,15 +14,13 @@ const getNominationsLocalStorage = () => {
         return JSON.parse(localStorage.getItem(NOMINATIONS))
     }
     else return {
-        toast: "",
         nominations: [],
     }
 }
 
 type Action =
-    | { type: "ADD_NOMINATION_START"; item: Movie }
-    | { type: "ADD_NOMINATION_SUCCESS"; item: Movie }
-    | { type: "ADD_NOMINATION_FAIL"; toast: Toast }
+    { type: "ADD_NOMINATION_SUCCESS"; item: Movie }
+    | { type: "ADD_NOMINATION_FAIL" }
     | { type: "REMOVE_NOMINATION"; item: Movie }
     | { type: "REMOVE_ALL_NOMINATIONS" }
     | { type: "SUBMIT_NOMINATIONS" };
@@ -43,12 +34,6 @@ export const nominationsReducer = (state: State, action: Action) => {
             return {
                 ...state,
                 nominations: [...state.nominations, action.item]
-            };
-        }
-        case "ADD_NOMINATION_FAIL": {
-            return {
-                ...state,
-                toast: action.toast
             };
         }
         case "REMOVE_NOMINATION": {
@@ -73,7 +58,7 @@ export const NominationsProvider = (props) => {
         localStorage.setItem(NOMINATIONS, JSON.stringify(state));
     }, [state]);
 
-    const addNomination = (item) => dispatch({type: "ADD_NOMINATION_SUCCESS", item });
+    const addNomination = (item) => dispatch({ type: "ADD_NOMINATION_SUCCESS", item })
     const removeNomination = (item) => dispatch({ type: "REMOVE_NOMINATION", item });
     const clearNominations = () => dispatch({ type: "REMOVE_ALL_NOMINATIONS" });
 

@@ -28,7 +28,7 @@ export default function Nominations() {
                 <div className="flex flex-grow flex-col sm:flex-row md:items-center md:ml-6">
                     <p className="text-md md:text-xl md:my-5"> {getText(nominations)} </p>
                     <div className="flex">
-                        {nominations.map(nomination => <NominationBadge nomination={nomination} />)}
+                        {nominations.map(nomination => <NominationBadge key={nomination.imdbID} nomination={nomination} />)}
                     </div>
                 </div>
                 <Transition
