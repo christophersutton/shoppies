@@ -46,7 +46,7 @@ export default function Nominations() {
     }, [nominations])
 
     return (
-        <footer className="fixed bottom-0 w-full ">
+        <footer className="fixed bottom-0 w-full">
             <Details state={state} toggle={toggleDisplay} nominations={nominations} />
             <Summary state={state} toggle={toggleDisplay} nominations={nominations} />
         </footer>

@@ -2,7 +2,7 @@ import { Transition } from "@headlessui/react";
 import { NominationProps } from '../NominationsWrapper'
 import DetailLineItem from './DetailsLineItem'
 import { useNominations } from '../../../lib/use-nominations'
-import { XIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon } from '@heroicons/react/solid'
 
 export default function Details({ state, toggle, nominations }: NominationProps) {
 
@@ -17,14 +17,17 @@ export default function Details({ state, toggle, nominations }: NominationProps)
                 leaveTo="translate-y-off"
             >
                 <div className="bg-green-600 text-white shadow-lg">
-                    <div className="min-h-full px-4">
-                        <button className="inline" onClick={() => toggle()}><XIcon className="w-5 h-5 my-2 text-white group-hover:text-black-600" aria-hidden="true" /></button>
-                        <h3 className="text-center font-bold text-2xl p-4 inline">Your Nominations</h3>
-                        <ul className="flex overflow-x-auto">
+                    <div className="min-h-full pt-4">
+
+
+                        <ul className="flex overflow-x-auto px-4">
                             {nominations.map(movie => <DetailLineItem movie={movie} />)}
                         </ul>
+                        <button className="w-full mt-4 bg-gradient-to-b bg-green-900 from-green-600 hover:bg-green-800 h-12" onClick={() => toggle()}>
+                            <ChevronDownIcon className="text-gray-300 ml-4 h-8 w-8 float-left" />
+                            <ChevronDownIcon className="h-8 w-8 float-right" />
+                        </button>
 
-                        <button onClick={() => clearNominations()}>Clear All Nominations</button>
                     </div>
                 </div >
 
