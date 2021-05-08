@@ -28,11 +28,11 @@ export default function MovieCard(movie: Movie) {
           </p>
           <p className="text-sm text-gray-500">{Year}</p>
         </div>
-        <div>
+        <div className="flex">
           <button
             disabled={disabled}
             onClick={handleClick}
-            className="inline-flex items-center w-12 md:w-16 mx-4 bg-white text-green-900 hover:text-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-12 md:w-16 mx-4 bg-white text-green-900 hover:text-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isNominated ? <BadgeCheckIcon /> : <BadgeCheckIconOutline />}
           </button>
