@@ -1,7 +1,7 @@
 import { BadgeCheckIcon } from '@heroicons/react/solid'
 import { Transition } from "@headlessui/react";
 
-export default function NominationBadge({ toggle }) {
+export default function NominationBadge() {
     return (
         <>
             <Transition
@@ -11,7 +11,7 @@ export default function NominationBadge({ toggle }) {
                 enterFrom="translate-x-96 opacity-20"
                 enterTo="opacity-100"
             >
-                <button onClick={() => toggle()}><BadgeCheckIcon className="text-white h-8 mr-2 md:ml-8 hover:text-green-200" /></button>
+                <BadgeCheckIcon className="text-white h-8 mr-2 sm:ml-4 md:ml-8" />
             </Transition>
         </>
     )
