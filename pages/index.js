@@ -2,7 +2,7 @@ import { useState } from "react";
 import useSearch from "../lib/use-search";
 import Search from "../components/Search";
 import ResultsContainer from "../components/ResultsContainer";
-import Nominations from '../components/Nominations'
+import NominationsWrapper from '../components/Nominations/NominationsWrapper'
 const searchInit = {
   term: "",
   shouldFetch: false,
@@ -35,7 +35,7 @@ export default function Home() {
           currentSearchParams={searchParams}
         />
       </div>
-      <Nominations/>
+      <NominationsWrapper/>
     </div>
   );
 }

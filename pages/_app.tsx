@@ -1,4 +1,4 @@
-import 'tailwindcss/tailwind.css'
+import '../styles/globals.css'
 
 import { AppProps } from 'next/app'
 import { _NominationsContext } from '../lib/use-nominations'

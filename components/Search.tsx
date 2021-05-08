@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { searchParams } from '../lib/use-search'
 
 type SearchProps = {
@@ -19,7 +19,7 @@ export default function Search({
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
-    setSearchParams({ term: searchTerm, shouldFetch: false, page: 1 });
+    setSearchParams({ term: searchTerm, shouldFetch: true, page: 1 });
   };
 
   return (
