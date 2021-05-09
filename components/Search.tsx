@@ -14,6 +14,8 @@ export default function Search({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // hide mobile keyboards by blurring form on submit
+    document.getElementById('searchTerm').blur()
     setSearchParams({ term: searchTerm, shouldFetch: true, page: 1, });
   };
 
