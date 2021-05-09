@@ -38,11 +38,15 @@ export default function Nominations() {
         : setState({ ...state, showDetails: true })
 
     useEffect(() => {
-        setState({
-            ...state,
-            text: getText(nominations),
-            showSubmit: showSubmit(nominations)
-        })
+        if (nominations.length == 0) {
+            setState({ ...state, showDetails: false, text: getText(nominations) })
+        } else {
+            setState({
+                ...state,
+                text: getText(nominations),
+                showSubmit: showSubmit(nominations)
+            })
+        }
     }, [nominations])
 
     return (

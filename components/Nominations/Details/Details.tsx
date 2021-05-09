@@ -21,11 +21,13 @@ export default function Details({ state, toggle, nominations }: NominationProps)
                     <div className="bg-green-600 text-white shadow-lg text-center">
                         <div className="min-h-full pt-4">
 
-
+                            {nominations.length == 0 ? <p>You haven't saved any nominations yet.</p> : ''}
                             <ul className="flex overflow-x-auto inline-block px-4 pb-4 nomination-cards">
                                 {nominations.map(movie => <NominationCard movie={movie} key={movie.imdbID} />)}
-                                <li className="w-2"></li>
+                                {/* empty li along with pseudo after content ensures proper margin for overflow scroll container */}
+                                <li></li>
                             </ul>
+
                             <button className="w-full flex justify-center items-end bg-gradient-to-b bg-green-800 from-green-600 hover:bg-green-900 h-12" onClick={() => toggle()}>
                                 <ChevronDownIcon className="h-8 w-8" />
                             </button>
