@@ -1,14 +1,22 @@
+import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react';
 import NominationBadge from './Badge';
 import ReviewButton from './ReviewButton'
 import { NominationProps } from '../NominationsWrapper'
 
+const getActiveClasses = (nominations) => {
+    return nominations.length == 0 
+    ? 'bg-green-900' : nominations.length == 5 
+    ? 'cursor-pointer bg-green-600 hover:bg-green-900' 
+    : 'cursor-pointer bg-green-900 hover:bg-green-600'
+}
 
 export default function Summary({ state, toggle, nominations }: NominationProps) {
 
-    const activeStyles = nominations.length == 0 
-        ? 'bg-green-900' : nominations.length == 5 
-        ? 'cursor-pointer bg-green-600 hover:bg-green-900' : 'cursor-pointer bg-green-900 hover:bg-green-600'
+    const [activeClasses, setActiveClasses] = useState('')
+    useEffect(() => {
+        setActiveClasses(getActiveClasses(nominations));
+    },[nominations])
 
     return (
         <div className="absolute bottom-0 w-full">
@@ -21,7 +29,7 @@ export default function Summary({ state, toggle, nominations }: NominationProps)
                 leave="transform ease-in duration-200"
                 leaveTo="translate-y-off"
             >
-                <a className={`block text-white group ${activeStyles}`} onClick={(() => toggle())}>
+                <div className={`text-white group ${activeClasses}`} onClick={(() => toggle())}>
                     <div className="max-w-3xl mx-auto px-2 h-auto py-1 flex justify-between items-center">
 
                         <div className="flex flex-grow flex-col sm:flex-row sm:items-center sm:ml-6">
@@ -35,7 +43,7 @@ export default function Summary({ state, toggle, nominations }: NominationProps)
 
 
                     </div>
-                </a>
+                </div>
             </Transition>
         </div>
     )
