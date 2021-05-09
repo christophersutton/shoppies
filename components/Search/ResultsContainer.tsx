@@ -4,7 +4,6 @@ export default function ResultsContainer({
   data,
   error,
   shouldFetch,
-  isValidating,
   setSearchParams,
   currentSearchParams,
 }) {

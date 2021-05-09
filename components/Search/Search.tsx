@@ -53,7 +53,6 @@ export default function Search() {
       <ResultsContainer
         data={data}
         error={error}
-        isValidating={isValidating}
         shouldFetch={searchParams.shouldFetch}
         setSearchParams={setSearchParams}
         currentSearchParams={searchParams}

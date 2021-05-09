@@ -1,17 +1,18 @@
-export default function usePagination(
+export default function getPagination(
   totalResults: number,
   currentPage: number
 ) {
     
   let startResult, endResult, showNext, showPrev;
+  
   if (totalResults <= 10) {
     startResult = 1;
     endResult = totalResults;
   } else {
-    startResult = currentPage == 1 ? 1 : currentPage * 10 - 9;
+    startResult = currentPage * 10 - 9;
     endResult =
       startResult + 9 > totalResults
-        ? totalResults - startResult
+        ? totalResults 
         : startResult + 9;
   }
 
