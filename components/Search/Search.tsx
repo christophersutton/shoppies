@@ -1,28 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSearch from "../../lib/use-search";
 import ResultsContainer from "../Search/ResultsContainer";
 
-const searchInit = {
-  term: "",
-  shouldFetch: false,
-  page: 1,
-};
-
 export default function Search() {
 
-  const [searchParams, setSearchParams] = useState(searchInit);
+  const [searchParams, setSearchParams] = useState({
+    term: "",
+    shouldFetch: false,
+    page: 1,
+  });
   const { data, error, isValidating } = useSearch(searchParams);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // hide mobile keyboards by blurring form on submit
     document.getElementById('searchTerm').blur()
-    setSearchParams({ term: searchParams.term, shouldFetch: true, page: 1, });
+    setSearchParams({ ...searchParams, shouldFetch: true, page: 1, });
   };
 
+  // after initial search that sets shouldFetch to true,
+  // subsequent edits to the search term will automatically be fetched.
+  // May want to consider adding a timeout to reduce api calls
   const handleChange = (e) => {
-    setSearchParams({...searchParams, term:e.target.value});
-    //setSearchParams({ term: searchTerm, shouldFetch: true, page: 1 });
+    setSearchParams({ ...searchParams, term: e.target.value, page: 1, })
   };
 
   return (
@@ -51,13 +51,13 @@ export default function Search() {
         </div>
       </form>
       <ResultsContainer
-          data={data}
-          error={error}
-          isValidating={isValidating}
-          shouldFetch={searchParams.shouldFetch}
-          setSearchParams={setSearchParams}
-          currentSearchParams={searchParams}
-        />
+        data={data}
+        error={error}
+        isValidating={isValidating}
+        shouldFetch={searchParams.shouldFetch}
+        setSearchParams={setSearchParams}
+        currentSearchParams={searchParams}
+      />
     </div>
   );
 }
