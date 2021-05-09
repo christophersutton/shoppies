@@ -7,3 +7,8 @@
     --tw-translate-y: 100vh;
   }
 }
+/*  Adding pseudo content to end of nominations cards since 
+    can't extend overflow-scroll container by setting margins */
+.nomination-cards li:last-child:after {
+  content: '\00a0';
+}

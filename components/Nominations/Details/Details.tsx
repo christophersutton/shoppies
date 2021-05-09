@@ -1,6 +1,6 @@
 import { Transition } from "@headlessui/react";
 import { NominationProps } from '../NominationsWrapper'
-import DetailLineItem from './DetailsLineItem'
+import NominationCard from './NominationCard'
 import { useNominations } from '../../../lib/use-nominations'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { FocusOn } from 'react-focus-on';
@@ -16,17 +16,18 @@ export default function Details({ state, toggle, nominations }: NominationProps)
                 enterFrom="translate-y-off"
                 leave="transform ease-in duration-300"
                 leaveTo="translate-y-off"
-            ><FocusOn
-                onClickOutside={toggle}>
-                    <div className="bg-green-600 text-white shadow-lg">
+            >
+                <FocusOn onClickOutside={toggle} autoFocus={false}>
+                    <div className="bg-green-600 text-white shadow-lg text-center">
                         <div className="min-h-full pt-4">
 
 
-                            <ul className="flex overflow-x-auto px-4">
-                                {nominations.map(movie => <DetailLineItem movie={movie} key={movie.imdbID} />)}
+                            <ul className="flex overflow-x-auto inline-block px-4 pb-4 nomination-cards">
+                                {nominations.map(movie => <NominationCard movie={movie} key={movie.imdbID} />)}
+                                <li className="w-2"></li>
                             </ul>
-                            <button className="w-full mt-4 bg-gradient-to-b bg-green-900 from-green-600 hover:bg-green-800 h-12" onClick={() => toggle()}>
-                                <ChevronDownIcon className="h-8 w-8 float-right" />
+                            <button className="w-full flex justify-center items-end bg-gradient-to-b bg-green-800 from-green-600 hover:bg-green-900 h-12" onClick={() => toggle()}>
+                                <ChevronDownIcon className="h-8 w-8" />
                             </button>
 
                         </div>

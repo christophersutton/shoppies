@@ -30,11 +30,11 @@ export default function Summary({ state, toggle, nominations }: NominationProps)
                 leaveTo="translate-y-off"
             >
                 <div className={`text-white group ${activeClasses}`} onClick={(() => toggle())}>
-                    <div className="max-w-3xl mx-auto px-2 h-auto py-1 flex justify-between items-center">
+                    <div className="max-w-3xl mx-auto px-2 h-auto py-3 flex justify-between items-center">
 
                         <div className="flex flex-grow flex-col sm:flex-row sm:items-center sm:ml-6">
 
-                            <p className="text-md sm:text-xl mt-1 sm:my-5"> {state.text} </p>
+                            <p className="text-md sm:text-xl sm:my-5"> {state.text} </p>
                             <div className="flex">
                                 {nominations.map(nomination => <NominationBadge key={nomination.imdbID} />)}
                             </div>
