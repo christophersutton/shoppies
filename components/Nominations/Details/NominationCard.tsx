@@ -9,7 +9,7 @@ export default function NominationCard({ movie }) {
         <li className="bg-white rounded-lg shadow-lg divide-y divide-gray-200 text-green-900 align-left mr-4 flex flex-col justify-between">
             {/* Using inline block and a wrapper div around h4 to contain the h4 content in variable width of sibling image  */}
             <div className="inline-block">
-                <img src={movie.Poster} className="rounded-t-lg max-h-96 max-w-max"></img>
+                <img src={movie.Poster} alt={movie.Title} className="rounded-t-lg max-h-96 max-w-max"></img>
                 <div className="flex place-content-center">
                     <h4 className="text-lg p-2 w-0 flex-grow flex justify-center items-center">{movie.Title}</h4>
                 </div>

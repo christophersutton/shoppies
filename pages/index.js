@@ -1,18 +1,8 @@
-import { useState } from "react";
-import useSearch from "../lib/use-search";
 import Search from "../components/Search";
-import ResultsContainer from "../components/ResultsContainer";
 import NominationsWrapper from '../components/Nominations/NominationsWrapper'
-const searchInit = {
-  term: "",
-  shouldFetch: false,
-  page: 1,
-};
 
 export default function Home() {
-  const [searchParams, setSearchParams] = useState(searchInit);
-  const { data, error, isValidating } = useSearch(searchParams);
-
+  
   return (
     <div className="w-full">
       <header className="h-4 bg-green-900"></header>
@@ -22,18 +12,7 @@ export default function Home() {
             Submit Your <span className="font-bold">Shoppies</span> Nominations 
           </h1>
         </div>
-        <Search
-          setSearchParams={setSearchParams}
-          currentSearchParams={searchParams}
-        />
-        <ResultsContainer
-          data={data}
-          error={error}
-          isValidating={isValidating}
-          shouldFetch={searchParams.shouldFetch}
-          setSearchParams={setSearchParams}
-          currentSearchParams={searchParams}
-        />
+        <Search/>
       </div>
       <NominationsWrapper/>
     </div>

@@ -1,27 +1,28 @@
 import { useState } from "react";
-import { searchParams } from '../lib/use-search'
+import useSearch from "../../lib/use-search";
+import ResultsContainer from "../Search/ResultsContainer";
 
-type SearchProps = {
-  setSearchParams: (searchParams: searchParams) => void,
-  currentSearchParams: searchParams,
+const searchInit = {
+  term: "",
+  shouldFetch: false,
+  page: 1,
 };
 
-export default function Search({
-  setSearchParams,
-  currentSearchParams,
-}: SearchProps) {
-  const [searchTerm, setSearchTerm] = useState(currentSearchParams.term);
+export default function Search() {
+
+  const [searchParams, setSearchParams] = useState(searchInit);
+  const { data, error, isValidating } = useSearch(searchParams);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // hide mobile keyboards by blurring form on submit
     document.getElementById('searchTerm').blur()
-    setSearchParams({ term: searchTerm, shouldFetch: true, page: 1, });
+    setSearchParams({ term: searchParams.term, shouldFetch: true, page: 1, });
   };
 
   const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-    setSearchParams({ term: searchTerm, shouldFetch: true, page: 1 });
+    setSearchParams({...searchParams, term:e.target.value});
+    //setSearchParams({ term: searchTerm, shouldFetch: true, page: 1 });
   };
 
   return (
@@ -34,7 +35,8 @@ export default function Search({
           autoComplete="false"
           className=" py-3 border-2 text-center min-w-full sm:text-sm rounded-t-md 
                       border-green-900 group-hover:border-green-700 focus:ring-inset focus:ring-2 focus:ring-green-700 focus:border-green-700 "
-          placeholder="Search for your favorite movie"
+          placeholder='&#128269; Search to get started'
+          onFocus={(e) => e.target.placeholder = ''}
           onChange={handleChange}
         />
 
@@ -48,6 +50,14 @@ export default function Search({
           </button>
         </div>
       </form>
+      <ResultsContainer
+          data={data}
+          error={error}
+          isValidating={isValidating}
+          shouldFetch={searchParams.shouldFetch}
+          setSearchParams={setSearchParams}
+          currentSearchParams={searchParams}
+        />
     </div>
   );
 }

@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-import { useNominations } from "../lib/use-nominations";
-import { Movie } from '../lib/types'
+import { useNominations } from "../../lib/use-nominations";
+import { Movie } from '../../lib/types'
 import { BadgeCheckIcon } from '@heroicons/react/solid'
 import { BadgeCheckIcon as BadgeCheckIconOutline } from '@heroicons/react/outline'
 
 
-export default function MovieCard(movie: Movie) {
+export default function ResultLineItem(movie: Movie) {
   const { addNomination, removeNomination, nominations } = useNominations();
   const { imdbID, Poster, Title, Year } = movie
 

@@ -1,6 +1,6 @@
-import MovieCard from "./MovieCard";
-import usePagination from '../lib/use-pagination'
-import { searchParams } from '../lib/use-search'
+import ResultLineItem from "./ResultLineItem";
+import usePagination from '../../lib/use-pagination'
+import { searchParams } from '../../lib/use-search'
 
 
 type ResultListProps = {
@@ -31,7 +31,7 @@ export default function ResultList({
     <div className="flow-root mt-6">
       <ul className="divide-y divide-gray-200">
         {data.Search.map((movie) => (
-          <MovieCard {...movie} key={movie.imdbID} />
+          <ResultLineItem {...movie} key={movie.imdbID} />
         ))}
       </ul>
       <nav
