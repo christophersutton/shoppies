@@ -20,7 +20,7 @@ export default function Summary({ state, toggle, nominations }: NominationsProps
 
                 <div className={`text-white group ${state.summaryClasses}`} onClick={(() => toggle())}>
                     <div className="w-full flex justify-center items-end">
-                        {nominations.length > 0 ? <ChevronUpIcon className="h-8 w-8" /> : '' }
+                        {nominations.length > 0 ? <ChevronUpIcon className="h-6 w-6" /> : '' }
                     </div>
                     <div className="max-w-3xl mx-auto px-2 h-auto pb-4 -m-t-4 flex justify-between items-center">
 

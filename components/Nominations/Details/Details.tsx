@@ -35,7 +35,7 @@ export default function Details({ state, toggle, nominations }: NominationsProps
                                 </ul>
 
                                 <button className="w-full flex justify-center items-end bg-gradient-to-b bg-green-800 from-green-600 hover:bg-green-900 h-12" onClick={() => toggle()}>
-                                    <ChevronDownIcon className="h-8 w-8" />
+                                    <ChevronDownIcon className="h-6 w-6" />
                                 </button>
 
                             </div>

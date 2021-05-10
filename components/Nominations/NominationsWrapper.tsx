@@ -37,7 +37,7 @@ const showReview = (nominations) => nominations.length === 5
 // helper method for summary bar active classes
 const getSummaryClasses = (nominations) => {
     return nominations.length == 0
-        ? 'bg-green-900' : nominations.length == 5
+        ? 'bg-green-900 pt-4' : nominations.length == 5
             ? 'cursor-pointer bg-green-600 hover:bg-green-900'
             : 'cursor-pointer bg-green-900 hover:bg-green-600'
 }
