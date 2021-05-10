@@ -1,6 +1,10 @@
 # Shoppies - Frontend Intern Challenge
 [Chris Sutton's](https://github.com/christophersutton/) submission for the [Shopify Fall 2021 Frontend Developer Internship](https://www.shopify.com/careers/fall-2021-frontend-developer-internship-1549282c). 
 
+Site is deployed at [https://shoppies-sutton.vercel.app/](https://shoppies-sutton.vercel.app/)
+
+Thanks for taking a look! You can reach me chris_sutton@hey.com
+
 ## The Challenge
 
 We need a webpage that can search OMDB for movies, and allow the user to save their favourite films they feel should be up for nomination. When they've selected 5 nominees they should be notified they're finished.
