@@ -1,13 +1,11 @@
 import { Transition } from "@headlessui/react";
-import { NominationProps } from '../NominationsWrapper'
-import NominationCard from './NominationCard'
-import { useNominations } from '../../../lib/use-nominations'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { FocusOn } from 'react-focus-on';
+import { NominationsProps } from '../NominationsWrapper'
+import NominationCard from './NominationCard'
 
-export default function Details({ state, toggle, nominations }: NominationProps) {
+export default function Details({ state, toggle, nominations }: NominationsProps) {
 
-    const { clearNominations } = useNominations();
     return (
         <div className="absolute bottom-0 w-full">
             <Transition

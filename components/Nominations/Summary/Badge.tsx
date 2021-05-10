@@ -11,7 +11,7 @@ export default function NominationBadge() {
                 enterFrom="translate-x-96 opacity-20"
                 enterTo="opacity-100"
             >
-                <BadgeCheckIcon className="text-white h-8 mr-2 sm:ml-4 md:ml-8" />
+                <BadgeCheckIcon className="h-8 w-8 mr-2 sm:ml-3.5 md:ml-8" />
             </Transition>
         </>
     )
