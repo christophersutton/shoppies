@@ -1,11 +1,22 @@
-import ResultLineItem from "./ResultLineItem";
-import getPagination from '../../lib/get-pagination'
+import { useState, useEffect } from 'react';
+import ResultListItem from "./ResultListItem";
 import { searchParams } from '../../lib/use-search'
 
 type ResultListProps = {
   data: any;
   setSearchParams: (searchParams: searchParams) => void;
   currentSearchParams: searchParams;
+}
+
+function getPagination(
+  totalResults: number,
+  currentPage: number
+) {
+  const startResult = currentPage * 10 - 9;
+  const endResult = startResult + 9 > totalResults ? totalResults : startResult + 9;
+  const showPrev = currentPage === 1 ? false : true;
+  const showNext = endResult === totalResults ? false : true;
+  return { startResult, endResult, showNext, showPrev };
 }
 
 export default function ResultList({
@@ -25,12 +36,22 @@ export default function ResultList({
     setSearchParams({ ...currentSearchParams, page: page });
   };
 
-  return (
+  const [movies, setMovies] = useState([])
 
+  useEffect(() => {
+    if (data.Search) {
+      setMovies(data.Search.map((movie) => {
+        movie.Poster = movie.Poster === "N/A" ? 'https://s3.amazonaws.com/www.databoxdigital.com/images/poster-not-available.png' : movie.Poster
+        return movie
+      }))
+    }
+  },[data])
+
+  return (
     <div className="flow-root mt-6">
       <ul className="divide-y divide-gray-200">
-        {data.Search.map((movie) => (
-          <ResultLineItem {...movie} key={movie.imdbID} />
+        {movies.map((movie) => (
+             < ResultListItem { ...movie } key = { movie.imdbID } />
         ))}
       </ul>
       <nav
@@ -38,7 +59,7 @@ export default function ResultList({
         aria-label="Pagination"
       >
         {showPrev ? (
-          <button 
+          <button
             onClick={(e) => handlePageClick(e, currentSearchParams.page - 1)}
             className="relative inline-flex items-center px-4 py-2 border hover:border-green-900 text-sm font-medium rounded-md text-green-900 bg-white hover:bg-gray-50"
           >
@@ -66,9 +87,7 @@ export default function ResultList({
         ) : (
           ""
         )}
-
       </nav>
     </div>
-
   );
 }

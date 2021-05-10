@@ -4,7 +4,7 @@ import { BadgeCheckIcon } from '@heroicons/react/solid'
 import { BadgeCheckIcon as BadgeCheckIconOutline } from '@heroicons/react/outline'
 
 
-export default function ResultLineItem(movie: Movie) {
+export default function ResultListItem(movie: Movie) {
   const { addNomination, removeNomination, nominations } = useNominations();
   const { imdbID, Poster, Title, Year } = movie
 

@@ -1,15 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useSearch from "../../lib/use-search";
 import ResultsContainer from "../Search/ResultsContainer";
 
+export interface SearchParamsState {
+  term: string;
+  shouldFetch: boolean;
+  page: number;
+}
+
 export default function Search() {
 
-  const [searchParams, setSearchParams] = useState({
+  const [searchParams, setSearchParams] = useState<SearchParamsState>({
     term: "",
     shouldFetch: false,
     page: 1,
   });
-  const { data, error, isValidating } = useSearch(searchParams);
+  const { data, error } = useSearch(searchParams);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +41,7 @@ export default function Search() {
           autoComplete="false"
           className=" py-3 border-2 text-center min-w-full sm:text-sm rounded-t-md 
                       border-green-900 group-hover:border-green-700 focus:ring-inset focus:ring-2 focus:ring-green-700 focus:border-green-700 "
-          placeholder='&#128269; Search to get started'
+          placeholder='&#128269; Find your first nominee'
           onFocus={(e) => e.target.placeholder = ''}
           onChange={handleChange}
         />
